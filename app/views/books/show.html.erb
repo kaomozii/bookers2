@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <%= render 'users/userinfo' ,user: @book.user,book:@booknew%>
+    </div>
+    <div class="col-lg-8">
+    <h2>Book detail</h2>
+      <table class="table table-striped">
+        <thead></thead>
+        <tbody>
+        <tr>
+          <td><%= link_to @book.user.name, user_path(@book.user.id)%></td>
+          <td><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" ,size: '40x40'%></td>
+          <td><%= @book.title %></td>
+          <td><%= @book.body %></td>
+          <% if @book.user == current_user%>
+          <td><%= link_to 'Edit', edit_book_path(@book) %></td>
+          <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' } %></td>
+          <% else %>
+          <% end %>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

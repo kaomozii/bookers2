@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'users/userinfo' ,user:@user,book:@booknew%>
+    </div>
+    <div class="col-lg-9">
+    <h2>Books</h2>
+      <table class="table table-striped">
+        <thead>
+         <th>Title</th>
+         <th>Opnion</th>
+        </thead>
+        <tbody>
+           <% @books.each do |book| %>
+         <tr>
+          <td><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" ,size: '40x40'%></td>
+          <td><%=link_to book.title, book_path(book) %></td>
+          <td><%= book.body %></td>
+         </tr>
+         <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
